@@ -9,7 +9,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 // Define the API endpoints
-app.get('/', (req, res) => {
+app.get('/data', (req, res) => {
   // Read the data from the JSON file and send it as a response
   const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   res.json(data);
@@ -25,10 +25,13 @@ app.post('/', (req, res) => {
 });
 
 // Start the server
-const port = 3000;
+const port = 4000;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
+// Export the Express API
+module.exports = app
 
 
 // index.js
