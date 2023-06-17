@@ -9,14 +9,14 @@ app.use(cors())
 app.use(bodyParser.json());
 
 // Define the API endpoints
-app.get('/data', (req, res) => {
+app.get('/api/data', (req, res) => {
   // Read the data from the JSON file and send it as a response
   const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
   res.json(data);
   res.send('api working')
 });
 
-app.post('/', (req, res) => {
+app.post('/api/data', (req, res) => {
   // Save the posted data to the JSON file
   const newData = req.body;
   fs.writeFileSync('data.json', JSON.stringify(newData));
