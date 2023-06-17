@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 // Define the API endpoints
 app.get('/api/data', (req, res) => {
   // Read the data from the JSON file and send it as a response
-  const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+  const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
   res.json(data);
   res.send('api working')
 });
@@ -19,7 +19,7 @@ app.get('/api/data', (req, res) => {
 app.post('/api/data', (req, res) => {
   // Save the posted data to the JSON file
   const newData = req.body;
-  fs.writeFileSync('data.json', JSON.stringify(newData));
+  fs.writeFileSync('./data.json', JSON.stringify(newData));
   res.json({ message: 'Data saved successfully' });
   res.send('This is my about route..... ')
 });
