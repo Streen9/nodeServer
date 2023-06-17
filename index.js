@@ -36,8 +36,13 @@
 
 // index.js
 const express = require('express')
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const fs = require('fs');
+
 
 const app = express()
+app.use(bodyParser.json());
 const PORT = 4000
 
 app.listen(PORT, () => {
