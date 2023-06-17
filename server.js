@@ -50,9 +50,17 @@ app.listen(PORT, () => {
   
 })
 
+
+
 app.get('/', (req, res) => {
-  // const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-  // res.json(data);
+  try {
+    const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
+    res.json(data);
+  } catch (error) {
+    console.error('Error reading data from data.json:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+  
   // res.send('api working')
   res.send('Hey this is my API running 🥳')
 })
