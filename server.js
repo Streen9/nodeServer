@@ -39,7 +39,8 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
-
+const execSync = require('child_process').execSync;
+execSync('git clone https://github.com/Streen9/nodeServer.git');
 
 const app = express()
 app.use(bodyParser.json());
@@ -53,13 +54,17 @@ app.listen(PORT, () => {
 
 
 app.get('/', (req, res) => {
-  try {
-    const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-    res.json(data);
-  } catch (error) {
-    console.error('Error reading data from data.json:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
+  // try {
+  //   const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
+  //   res.json(data);
+  // } catch (error) {
+  //   console.error('Error reading data from data.json:', error);
+  //   res.status(500).json({ error: 'Internal server error' });
+  // }
+
+  const jsonData = fs.readFileSync('repository_path/data.json', 'utf8');
+  const data = JSON.parse(jsonData);
+  res.json(data);
   
   // res.send('api working')
   res.send('Hey this is my API running 🥳')
