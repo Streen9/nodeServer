@@ -52,8 +52,8 @@ app.listen(PORT, () => {
 
 app.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
-  res.json({ message: 'Data saved successfully' });
   res.json(data);
+  // res.send('api working')
   res.send('Hey this is my API running 🥳')
 })
 
