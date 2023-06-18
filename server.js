@@ -40,6 +40,7 @@ app.post('/', (req, res) => {
   });
     //replacing the json file
     fs.writeFile('data.json', JSON.stringify(req.body), (err) => {
+      console.log('updated data',data.json)
       if (err) {
         console.error('Error writing data:', err);
         res.status(500).send('Internal Server Error');
